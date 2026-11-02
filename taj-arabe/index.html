@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taj Arabe · Cocina árabe en Chapinero, Bogotá</title>
+<meta name="description" content="Menú de Taj Arabe: hummus, falafel, kibbes, shawarma y más. Haz tu pedido, reserva tu mesa o pide tu camiseta de Palestina por WhatsApp.">
+<meta name="theme-color" content="#1B382F">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Taj Arabe · Cocina árabe">
+<meta property="og:description" content="Mira el menú y pide por WhatsApp.">
+<meta property="og:image" content="img/mesa.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Sketsa";src:url("fonts/SketsaRamadhan.otf") format("opentype");font-display:swap}
+:root{
+  --pine:#273722;--sahara:#E6CB78;--bronze:#B38643;--bronze-d:#86602A;
+  --cream:#F3EDDC;--cream-2:#E9E0C6;--paper:#FBF8EE;--ink:#1E2918;--muted:#5E6652;--line:#D9CFB0;
+  --bad:#B5483A;--r:0px;
+  --grain-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62  0 0 0 0 .70  0 0 0 0 .45  0 0 0 1.1 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--grain-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05  0 0 0 0 .09  0 0 0 0 .04  0 0 0 -1.5 0.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --strip:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M14 1 21 7 14 13 7 7Z' fill='none' stroke='%23B38643' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:122px}
+body{background:var(--cream);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:76px}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.green{background-color:var(--pine);background-image:var(--grain-l),var(--grain-d),radial-gradient(120% 100% at 50% 0%,#364B2D 0%,rgba(43,58,35,0) 65%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.22))}
+.strip{height:14px;background:var(--strip) center/28px 14px repeat-x}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(179,134,67,.4)}
+.top-row{display:flex;align-items:center;justify-content:space-between;height:64px}
+.name{font-family:"Sketsa",serif;font-size:36px;line-height:1;color:var(--sahara);text-decoration:none;padding-top:4px;transition:opacity .25s}
+.top:not(.scrolled) .name{opacity:0;pointer-events:none}
+.links{display:flex;gap:34px;margin-left:auto}
+.links a{font-size:15px;font-weight:600;color:var(--cream);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.links a:hover{border-bottom-color:var(--sahara);color:var(--sahara)}
+.burger{display:none;width:44px;height:44px;margin-right:-10px;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--cream)}
+.burger span:first-child{top:16px}.burger span:last-child{top:26px}
+@media(max-width:759px){
+  .links{display:none}.burger{display:block}
+  .top.open .links{display:flex;flex-direction:column;gap:0;position:absolute;top:64px;left:0;right:0;background:var(--pine);border-bottom:1px solid rgba(179,134,67,.4);padding:6px 20px 14px}
+  .top.open .links a{padding:15px 0;font-size:18px;border-bottom:1px solid rgba(243,237,220,.12)}
+}
+
+/* hero */
+.hero{text-align:center;padding:clamp(64px,12vw,124px) 0 clamp(56px,9vw,100px)}
+.hero h1{font-family:"Sketsa",serif;font-weight:400;font-size:clamp(84px,21vw,210px);line-height:1;color:var(--sahara)}
+.orn{display:flex;align-items:center;justify-content:center;gap:16px;margin:30px auto 22px;max-width:380px}
+.orn i{flex:1;height:1px;background:var(--bronze)}
+.orn b{width:11px;height:11px;background:var(--bronze);transform:rotate(45deg)}
+.hero .tag{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,237,220,.85)}
+.hero .intro{margin:14px auto 0;max-width:30em;font-size:17px;color:rgba(243,237,220,.88)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
+.facts{background-color:var(--sahara);background-image:repeating-linear-gradient(135deg,transparent 0 46px,rgba(43,58,35,.09) 46px 47px);color:var(--pine)}
+.facts .wrap{display:grid}
+@media(min-width:760px){.facts .wrap{grid-template-columns:repeat(3,1fr)}.fact{padding:32px 28px}.fact:first-child{padding-left:0}.fact+.fact{border-left:1px solid rgba(43,58,35,.28)}}
+@media(max-width:759px){.fact{padding:22px 0}.fact+.fact{border-top:1px solid rgba(43,58,35,.28)}}
+.fact small{display:block;font-size:13px;font-weight:700;opacity:.7;margin-bottom:4px}
+.fact p{font-size:18px;font-weight:600;line-height:1.35}
+.fact a{text-decoration:none;border-bottom:1.5px solid var(--bronze-d)}
+
+/* botones planos */
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;height:52px;padding:0 24px;border-radius:0;font-weight:600;font-size:15.5px;text-decoration:none;border:1px solid var(--pine);color:var(--pine);background:transparent;transition:background .15s,color .15s}
+.btn::after{content:"→";font-size:18px;transition:transform .15s}
+.btn:hover::after{transform:translateX(4px)}
+.btn:hover{background:var(--pine);color:var(--cream)}
+.green .btn{border-color:rgba(243,237,220,.55);color:var(--cream)}
+.green .btn:hover{background:var(--cream);color:var(--pine)}
+.btn.primary,.green .btn.wa{background:var(--sahara);border-color:var(--sahara);color:var(--pine)}
+.btn.primary:hover,.green .btn.wa:hover{background:var(--cream);border-color:var(--cream);color:var(--pine)}
+.btn.wa{background:var(--pine);border-color:var(--pine);color:var(--cream)}
+.btn.wa:hover{background:transparent;color:var(--pine)}
+.btn.block{width:100%}
+
+/* menú tipo carta */
+#menuwrap{position:relative}
+.catbar{position:sticky;top:64px;z-index:20;background:var(--cream);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:28px;overflow-x:auto;padding:0 20px;max-width:1080px;margin:0 auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:14px 0 12px;font-size:15px;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--pine)}
+.tab.on{color:var(--pine);border-bottom-color:var(--bronze)}
+section.cat{padding-top:52px}
+section.cat h2,.band h2{font-family:"Sketsa",serif;font-weight:400;font-size:46px;line-height:1.05;color:var(--pine)}
+section.cat h2::after,.band h2::after{content:"";display:block;width:44px;height:2px;background:var(--bronze);margin-top:12px}
+.cat .note{color:var(--muted);font-size:14px;margin-top:12px}
+.grid{display:grid;margin-top:12px}
+@media(min-width:860px){.grid{grid-template-columns:1fr 1fr;column-gap:56px}}
+.item{display:grid;grid-template-columns:1fr;gap:4px;padding:18px 0;border-bottom:1px solid var(--line);text-align:left;width:100%;transition:background .15s}
+.item.has-img{grid-template-columns:1fr 92px;column-gap:16px}
+.item:hover{background:rgba(179,134,67,.08)}
+.item .nm{display:flex;align-items:baseline;gap:8px;min-width:0}
+.item .n{font-size:17px;font-weight:700;color:var(--pine);line-height:1.25}
+.item .lead{flex:1;min-width:16px;border-bottom:1px dotted var(--bronze);position:relative;top:-4px}
+.item .pr{font-weight:700;color:var(--pine);white-space:nowrap;font-variant-numeric:tabular-nums}
+.item .add{flex:none;font-size:26px;font-weight:300;line-height:1;color:var(--bronze-d);align-self:center;margin-left:4px;width:22px;text-align:center}
+.item:hover .add{color:var(--pine)}
+.item .ds{color:var(--muted);font-size:14px;max-width:46ch}
+.item.has-img .nm,.item.has-img .ds{grid-column:1}
+.thumb{grid-column:2;grid-row:1/3;width:92px;height:92px;overflow:hidden;background:var(--cream-2);align-self:start}
+.thumb img{width:100%;height:100%;object-fit:cover}
+@media(max-width:600px){.has-img .nm{flex-wrap:wrap;row-gap:4px}.has-img .n{flex:1 1 100%}.has-img .lead{display:none}.has-img .pr{order:2}.has-img .add{order:3;margin-left:6px}}
+
+/* bloques */
+.band{padding:68px 0}
+.band.sahara{background:var(--sahara);color:var(--pine)}
+.band.green h2{color:var(--sahara)}.band.green h2::after{background:var(--sahara)}
+.band.sahara h2::after{background:var(--pine)}
+.band .lead{margin:14px 0 26px;max-width:520px;opacity:.9}
+.panel{background:var(--paper);border:1px solid var(--line);padding:22px;color:var(--ink)}
+.green .panel{background:rgba(0,0,0,.2);border-color:rgba(243,237,220,.2);color:var(--cream)}
+form.f{display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.l{display:grid;gap:6px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.green label.l{color:rgba(243,237,220,.8)}
+input,select,textarea{width:100%;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:12px;font:inherit;font-size:16px;font-weight:400}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--bronze);outline-offset:1px}
+textarea{resize:vertical;min-height:70px}
+.resinfo h3,.info h3{font-size:14px;font-weight:700;margin:0 0 6px}
+.resinfo h3{color:var(--sahara)}.info h3{color:var(--bronze-d);margin-top:22px}.info h3:first-child{margin-top:0}
+.resinfo p{margin:0 0 20px;color:rgba(243,237,220,.9)}.resinfo b{color:var(--cream);font-size:18px}
+.info p{margin:4px 0;color:var(--ink)}
+.shirts{display:grid;gap:18px}@media(min-width:700px){.shirts{grid-template-columns:1fr 1fr}}
+.shirt{padding:12px;display:grid;gap:12px}.shirt img{width:100%;background:#fff}
+.split{display:grid;gap:18px}
+@media(min-width:860px){.split{grid-template-columns:1fr 1fr}}
+.map{border:0;width:100%;height:100%;min-height:320px;filter:sepia(.25) saturate(.85)}
+.socials{display:flex;flex-wrap:wrap;gap:22px;margin-top:8px}
+.socials a{font-size:15px;font-weight:600;color:var(--pine);text-decoration:none;border-bottom:2px solid var(--bronze);padding-bottom:2px}
+.socials a:hover{border-bottom-color:var(--pine)}
+footer{padding:40px 0 34px;text-align:center;color:rgba(243,237,220,.72);font-size:13px}
+.foot-brand{font-family:"Sketsa",serif;font-size:42px;line-height:1.05;color:var(--sahara);margin-bottom:6px}
+
+/* barra de pedido */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none}
+.bar.show{display:block}
+.bar.show button{animation:rise .28s ease-out}
+@keyframes rise{from{transform:translateY(100%)}to{transform:none}}
+.bar button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px max(20px,calc((100vw - 1080px)/2 + 20px)) calc(16px + env(safe-area-inset-bottom));background:var(--sahara);color:var(--pine);font-weight:700;font-size:16px;border-top:2px solid var(--pine);box-shadow:0 -10px 30px rgba(0,0,0,.22)}
+.bar .bl{display:flex;align-items:center;gap:12px}
+.bar svg{width:24px;height:24px}
+.bar .bt{font-size:18px;display:flex;align-items:center;gap:10px}
+
+/* modal + carrito */
+.ov{position:fixed;inset:0;z-index:50;background:rgba(20,28,15,.72);display:none;align-items:flex-end;justify-content:center}
+.ov.show{display:flex}
+@media(min-width:700px){.ov{align-items:center}}
+.sheet{position:relative;background:var(--cream);color:var(--ink);width:100%;max-width:560px;max-height:92vh;display:flex;flex-direction:column;overflow:hidden}
+@media(min-width:700px){.sheet{max-height:86vh}}
+.sheet .hd{position:relative}
+.sheet .hd.noimg{height:46px}
+.sheet .hd img.cover{width:100%;height:210px;object-fit:cover}
+.x{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;background:var(--pine);color:var(--cream);font-size:15px}
+.sheet .bd{overflow-y:auto;padding:20px 20px 8px}
+.sheet h3.t{font-size:24px;line-height:1.2;color:var(--pine)}
+.sheet .d{color:var(--muted);font-size:14.5px;margin:6px 0 4px}
+.grp{margin-top:22px}
+.grp .gt{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;font-size:16px;font-weight:700;color:var(--pine)}
+.grp .gt small{font-weight:500;color:var(--muted);font-size:13px}
+.grp .gt small.req{color:var(--bronze-d);font-weight:700}
+.opt{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.opt:has(input:checked) span{font-weight:700;color:var(--pine)}
+.opt input{width:18px;height:18px;accent-color:var(--pine);flex:none;padding:0}
+.opt span{flex:1;font-size:15px}.opt em{font-style:normal;color:var(--muted);font-size:14px}
+.opt.dis{opacity:.4;pointer-events:none}
+.ft{padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:12px;align-items:center;background:var(--cream)}
+.qty{display:flex;align-items:center;border:1px solid var(--pine)}
+.qty button{width:38px;height:42px;font-size:20px;color:var(--pine)}
+.qty span{min-width:24px;text-align:center;font-weight:700}
+.ft .go{flex:1;white-space:nowrap;padding:14px;background:var(--pine);color:var(--sahara);font-weight:700;font-size:15.5px}
+.ft .go:disabled{opacity:.35;cursor:not-allowed}
+.ft .alt{flex:0 0 auto;padding:14px 18px;border:1px solid var(--pine);color:var(--pine);font-weight:600;font-size:15px}
+.ftt{display:grid;line-height:1.15}.ftt small{font-size:12.5px;color:var(--muted);font-weight:600}.ftt b{font-size:20px;color:var(--pine)}
+.lines{display:grid;gap:12px}
+.ln{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.ln b{font-size:15px;color:var(--pine)}.ln .o{grid-column:1;color:var(--muted);font-size:13px}
+.ln .pp{font-weight:700;grid-row:1;grid-column:2;color:var(--pine)}
+.ln .ctl{grid-column:1/3;display:flex;align-items:center;gap:10px;margin-top:4px}
+.ln .ctl .qty button{height:32px;width:32px}
+.ln .rm{margin-left:auto;color:var(--bad);font-size:13.5px;font-weight:600}
+.hint{color:var(--muted);font-size:13px}
+.empty{color:var(--muted);text-align:center;padding:30px 0}
+.more{margin-top:14px;width:100%}
+.okk{font-size:14px;font-weight:700;color:var(--bronze-d);padding-right:44px}
+.up{margin-top:14px}
+.up h4{font-size:16px;font-weight:700;color:var(--pine);margin:20px 0 2px}
+.upr{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.upr .n{flex:1;font-size:15px}.upr .p{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.upr button{border:1px solid var(--pine);color:var(--pine);padding:9px 14px;font-size:14px;font-weight:600;min-width:104px}
+.upr button:hover,.upr button.done{background:var(--pine);color:var(--sahara)}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:var(--pine);color:var(--sahara);padding:11px 18px;font-size:14px;font-weight:600;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top green" id="top">
+  <div class="wrap top-row">
+    <a class="name" href="#top" aria-label="Taj Arabe, ir al inicio">Taj Arabe</a>
+    <nav class="links" id="links" aria-label="Principal">
+      <a href="#menu">Menú</a><a href="#reservas">Reservas</a><a href="#camiseta">Camiseta</a><a href="#visitanos">Visítanos</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero green">
+  <div class="wrap">
+    <h1>Taj Arabe</h1>
+    <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
+    <p class="tag">Cocina árabe · Chapinero, Bogotá</p>
+    <p class="intro">Hummus, falafel, kebab, maqluba y más. Pide en línea o reserva tu mesa.</p>
+    <div class="cta">
+      <a class="btn primary" href="#menu">Ver el menú</a>
+      <a class="btn" href="#reservas">Reservar mesa</a>
+    </div>
+  </div>
+</section>
+
+<section class="facts">
+  <div class="wrap">
+    <div class="fact"><small>Horario</small><p>Lunes a sábado, 12 m. a 9 pm<br>Domingos, 12 m. a 5 pm</p></div>
+    <div class="fact"><small>Dirección</small><p>Ak 7 #45-88, Chapinero<br>Bogotá</p></div>
+    <div class="fact"><small>Pedidos y reservas</small><p>WhatsApp<br><a href="https://wa.me/573177171058" target="_blank" rel="noopener">+57 317 717 1058</a></p></div>
+  </div>
+</section>
+
+<div id="menuwrap">
+  <div class="catbar"><nav class="tabs" id="chips" aria-label="Categorías del menú"></nav></div>
+  <main class="wrap" id="menu"></main>
+</div>
+
+<div class="strip" style="margin-top:56px"></div>
+
+<section class="band green" id="reservas" data-spy>
+  <div class="wrap">
+    <h2>Reservas</h2>
+    <p class="lead">Escoge día, hora y número de personas. Te confirmamos por WhatsApp.</p>
+    <div class="split" style="margin-top:0">
+    <form class="panel f" id="resForm">
+      <label class="l">Nombre<input name="n" required autocomplete="name"></label>
+      <div class="row2">
+        <label class="l">Fecha<input type="date" name="d" id="resDate" required></label>
+        <label class="l">Hora<select name="h" id="resHour" required></select></label>
+      </div>
+      <label class="l">Personas<select name="p" id="resPpl"></select></label>
+      <label class="l">Comentarios (opcional)<textarea name="c" placeholder="Cumpleaños, silla para bebé, etc."></textarea></label>
+      <button class="btn wa block" type="submit">Reservar por WhatsApp</button>
+    </form>
+    <div class="panel resinfo">
+      <h3>Horario</h3>
+      <p>Lunes a sábado<br><b>12:00 m. a 9:00 pm</b></p>
+      <p>Domingos<br><b>12:00 m. a 5:00 pm</b></p>
+      <h3>Ten en cuenta</h3>
+      <p>Tu reserva queda confirmada cuando te respondamos por WhatsApp. Para grupos de más de 12 personas, escríbenos con anticipación.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="band sahara" id="camiseta" data-spy>
+  <div class="wrap">
+    <h2>Camiseta de Palestina</h2>
+    <p class="lead">Escoge tu color y pídela por WhatsApp. Te contamos cómo hacer el pedido.</p>
+    <div class="shirts">
+      <article class="panel shirt"><img src="img/camiseta-blanca.webp" alt="Camiseta de Palestina blanca, frente y espalda" loading="lazy">
+        <a class="btn wa block" target="_blank" rel="noopener" data-shirt="blanca" href="#">Pedir camiseta blanca</a></article>
+      <article class="panel shirt"><img src="img/camiseta-negra.webp" alt="Camiseta de Palestina negra, frente y espalda" loading="lazy">
+        <a class="btn wa block" target="_blank" rel="noopener" data-shirt="negra" href="#">Pedir camiseta negra</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visitanos" data-spy>
+  <div class="wrap">
+    <h2>Visítanos</h2>
+    <div class="split">
+      <div class="panel info">
+        <h3>Dirección</h3>
+        <p>Ak 7 #45-88, Chapinero<br>Bogotá, Colombia</p>
+        <a class="btn block" style="margin-top:8px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Taj+Arabe+Ak+7+%2345-88+Chapinero+Bogot%C3%A1">Cómo llegar</a>
+        <h3>Horario</h3>
+        <p>Lunes a sábado: 12:00 m. a 9:00 pm<br>Domingos: 12:00 m. a 5:00 pm</p>
+        <h3>Contacto</h3>
+        <p><a href="https://wa.me/573177171058" target="_blank" rel="noopener">+57 317 717 1058</a> (WhatsApp)</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/taj_cocinaarabe/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@taj_cocinaarabe" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/t.a.tacosarabes" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <iframe class="map" title="Mapa de Taj Arabe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Ak+7+%2345-88,+Chapinero,+Bogot%C3%A1&z=16&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="strip"></div>
+<footer class="green"><div class="foot-brand brand">Taj Arabe</div><div style="margin-bottom:6px">Ak 7 #45-88, Chapinero · Bogotá</div><div>© <span id="yr"></span> Taj Arabe · Chapinero, Bogotá</div></footer>
+
+<div class="bar" id="bar"><button id="barBtn"><span class="bl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="barN">Ver pedido</span></span><span class="bt"><span id="barT"></span><span aria-hidden="true">→</span></span></button></div>
+
+<!-- Modal producto -->
+<div class="ov" id="ovItem" role="dialog" aria-modal="true"><div class="sheet" id="sheetItem"></div></div>
+<!-- Drawer carrito -->
+<div class="ov" id="ovCart" role="dialog" aria-modal="true"><div class="sheet plain" id="sheetCart"></div></div>
+<div class="ov" id="ovAdded" role="dialog" aria-modal="true"><div class="sheet" id="sheetAdded"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const WA = "573177171058";
+const cop = n => "$" + Math.round(n).toLocaleString("es-CO");
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const openWA = u => { const a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); };
+const store = k => { try { return localStorage.getItem(k) || ""; } catch(e){ return ""; } };
+const wa = txt => "https://wa.me/" + WA + "?text=" + encodeURIComponent(txt);
+
+/* ============ OPCIONES (estilo combo) ============ */
+const G = {
+  papas: {id:"papas", t:"¿Papas?", type:"one", def:0, opts:[["Sin papas",0],["Papas a la francesa",7000],["Papas agrandadas",10000]]},
+  acomp: {id:"acomp", t:"Acompañamientos", type:"many", max:2, opts:[["Arroz",5500],["Ensalada",5500]]},
+  bebida:{id:"bebida", t:"Bebida", type:"one", def:0, opts:[["Sin bebida",0],["Soda artesanal",7000],["Hatsu 250 ml",6000],["Gaseosa en lata",5000],["Limonada",6000],["Jugo de corozo",7000],["Jugo de tamarindo",7000],["Jugo de mango",7000],["Jugo de lulo",7000]]},
+  extraA:{id:"extraA", t:"Adicionales", type:"many", opts:[["Queso",2000],["Tocineta",3500],["Huevo",1500],["Doble carne",9500]]},
+  extraB:{id:"extraB", t:"Adicionales", type:"many", opts:[["Indio",2000],["Kibbes",6000],["Falafel",3000]]},
+  brochetaSides:{id:"bs", t:"Elige 2 acompañamientos", type:"many", min:2, max:2, opts:[["Arroz",0],["Ensalada",0],["Papas a la francesa",0]]},
+  carnes:{id:"carnes", t:"Elige 2 proteínas", type:"many", min:2, max:2, opts:[["Pollo",0],["Trompo (carne del día)",0],["Kafta de res",0]]},
+  tam:{id:"tam", t:"Tamaño", type:"one", def:0, opts:[["Normales",0],["Agrandadas",3000]]},
+  helado:{id:"helado", t:"¿Con helado?", type:"one", def:0, opts:[["Sin helado",0],["1 bola",3000],["2 bolas",6000]]},
+  saborLeche:{id:"sabor", t:"Sabor", type:"one", req:true, opts:[["Corozo",0],["Tamarindo",0],["Mango",0],["Lulo",0]]}
+};
+const COMBO = [G.papas, G.acomp, G.bebida, G.extraA];
+const PLATO = [G.papas, G.bebida, G.extraB];
+
+/* ============ MENÚ ============ */
+const MENU = [
+ {id:"entradas", name:"Entradas", items:[
+  {n:"Hummus", d:"Cremoso puré de garbanzo con sésamo tostado, limón y ajo. Con pan pita.", p:20000, img:"hummus"},
+  {n:"Falafel con hummus", d:"4 croquetas de garbanzo fritas, con hummus.", p:15500, img:"falafel-hummus-h"},
+  {n:"Kibbes con hummus", d:"3 empanadas árabes rellenas de carne molida, con corteza de trigo, acompañadas de hummus.", p:20000, img:"kibbes-h"},
+  {n:"Indios", d:"5 hojas de uva rellenas de arroz, carne molida y verduras, con salsa de ajo.", p:15000, img:"indios-h"},
+  {n:"Ensalada fattoush", d:"Ensalada árabe con rábanos, pepino, tomate, cebolla, lechuga, queso y chips de tortilla frita, con aceite de oliva, limón y zaatar.", p:9000, img:"fattoush"},
+  {n:"Hongos gourmet salteados", d:"Hongos frescos salteados con mantequilla, ajo, cebolla, tomate y queso.", p:12000}
+ ]},
+ {id:"especiales", name:"Platos especiales", items:[
+  {n:"Plato mixto árabe", d:"Picada árabe para una persona: 1 indio, 1 kibbe, 2 falafel, hummus, 1 kafta de res, ensalada tabulé, arroz árabe con almendra y carne molida, y pan pita.", p:46000, img:"mixto-h", o:PLATO},
+  {n:"Maqluba", d:"Plato palestino de arroz, pollo, berenjena, papa y tomate, con salsa de ajo.", p:44000, img:"maqluba-h", o:PLATO},
+  {n:"Brochetas kebab", d:"Brochetas de res y pollo con verduras y 2 acompañamientos a tu elección.", p:40000, img:"brochetas-kebab", o:[G.brochetaSides, G.bebida, G.extraB]},
+  {n:"Salmón en salsa de naranja", d:"Salmón en salsa de naranja con arroz y ensalada.", p:47000, o:[G.bebida, G.extraB]},
+  {n:"Mezza árabe para 2", d:"Picada para 2 personas: 2 indios, 2 kibbes, 4 falafel, 1 kafta, hummus, arroz árabe con carne y almendras, y pan pita.", p:85000, img:"mezza-arabe", o:[G.bebida]},
+  {n:"Sultan's New York", d:"Corte New York de res de 300 g a la parrilla, con ensalada y dip de hummus con pan pita.", p:40000, img:"sultan-ny", o:PLATO}
+ ]},
+ {id:"kebab", name:"Kebab", note:"Todos vienen envueltos en tortilla, con salsa de ajo.", items:[
+  {n:"Kebab de pollo", d:"Pollo a la parrilla finamente cortado con tabulé y salsa de hummus.", p:30000, img:"kebab-rolls-h", o:COMBO},
+  {n:"Trompo carne del día (shawarma)", d:"Carne cocinada en trompo de forma tradicional, con tabulé y hummus.", p:34000, img:"shawarma-h", o:COMBO},
+  {n:"Kebab de kafta (res)", d:"Dedos de carne (60% res, 40% cordero) a la parrilla, con tabulé y hummus.", p:32000, o:COMBO},
+  {n:"Kebab de falafel", d:"Croquetas de garbanzo fritas con tabulé y salsa de hummus.", p:30000, o:COMBO},
+  {n:"Kebab vegetariano", d:"Hongos a la parrilla con vegetales, queso y hummus.", p:30000, o:COMBO},
+  {n:"Kebab mixto dos carnes", d:"Shawarma con dos proteínas a tu elección, tabulé, hummus y lechuga.", p:36000, o:[G.carnes, G.papas, G.acomp, G.bebida, G.extraA]}
+ ]},
+ {id:"rapida", name:"Comida rápida", items:[
+  {n:"Hamburguesa de falafel", d:"130 g de croqueta de falafel con hummus, vegetales frescos, queso pera, aro de cebolla y berenjena, en pan artesanal.", p:28000, img:"hamburguesa-falafel", o:COMBO},
+  {n:"Hamburguesa de res", d:"130 g de kafta (carne de res árabe) con hummus, vegetales frescos, queso pera, aro de cebolla y berenjena, en pan artesanal.", p:28000, img:"hamburguesa-res", o:COMBO},
+  {n:"Shawarmi-papas", d:"Papas a la francesa con la carne del trompo, queso, salsa de ajo y vegetales al gusto.", p:26500, o:[G.acomp, G.bebida, G.extraA]},
+  {n:"Tacos árabes", d:"Pan pita con carne del día preparada en el horno de shawarma. Precio por unidad.", p:7000, img:"tacos-arabes", o:[G.bebida, G.extraA]}
+ ]},
+ {id:"acompana", name:"Acompáñalo", note:"Agranda tus papas por $3.000 más al armar tu pedido.", items:[
+  {n:"Arroz", d:"", p:5500}, {n:"Ensalada", d:"", p:5500}, {n:"Papas a la francesa", d:"Agrándalas por $3.000 más.", p:7000, o:[G.tam]},
+  {n:"Queso", d:"", p:2000}, {n:"Tocineta", d:"", p:3500}, {n:"Huevo", d:"", p:1500}, {n:"Doble carne", d:"", p:9500},
+  {n:"Indio", d:"", p:2000}, {n:"Kibbes", d:"", p:6000}, {n:"Falafel", d:"", p:3000}
+ ]},
+ {id:"postres", name:"Postres", items:[
+  {n:"Mamul", d:"Galleta tradicional árabe rellena de dátiles.", p:6000},
+  {n:"Baklava", d:"Postre tradicional árabe, crocante, relleno de nueces y bañado en almíbar.", p:6500, o:[G.helado]}
+ ]},
+ {id:"bebidas", name:"Bebidas", items:[
+  {n:"Soda artesanal", d:"", p:7000}, {n:"Hatsu 250 ml", d:"", p:6000}, {n:"Gaseosa en lata", d:"", p:5000},
+  {n:"Limonada", d:"", p:6000}, {n:"Jugo de corozo", d:"", p:7000}, {n:"Jugo de tamarindo", d:"", p:7000},
+  {n:"Jugo de mango", d:"", p:7000}, {n:"Jugo de lulo", d:"", p:7000}, {n:"Jugo mix", d:"", p:9000},
+  {n:"Jugo con leche", d:"Elige el sabor.", p:9000, o:[G.saborLeche]},
+  {n:"Cerveza nacional", d:"", p:7500}, {n:"Cerveza importada", d:"", p:8500}, {n:"Copa de vino", d:"", p:9000}
+ ]}
+];
+MENU.forEach(c => c.items.forEach((it, i) => it.id = c.id + "-" + i));
+
+/* ============ RENDER MENÚ ============ */
+function thumb(it){ return it.img ? `<div class="thumb"><img src="img/${it.img}.jpg" alt="${esc(it.n)}" loading="lazy"></div>` : ""; }
+$("#menu").innerHTML = MENU.map(c => `
+  <section class="cat" id="${c.id}" data-spy>
+    <h2>${c.name}</h2>${c.note ? `<p class="note">${c.note}</p>` : ""}
+    <div class="grid">${c.items.map(it => `
+      <button class="item${it.img ? " has-img" : ""}" data-id="${it.id}">
+        <span class="nm"><span class="n">${esc(it.n)}</span><span class="lead"></span><span class="pr">${cop(it.p)}</span><span class="add" aria-hidden="true">+</span></span>
+        ${it.d ? `<span class="ds">${esc(it.d)}</span>` : ""}
+        ${thumb(it)}
+      </button>`).join("")}</div>
+  </section>`).join("");
+const NAV = MENU.map(c => [c.id, c.name]);
+$("#chips").innerHTML = NAV.map(([id, n], i) => `<a class="tab" href="#${id}" data-c="${id}">${n}</a>`).join("");
+const byId = {}; MENU.forEach(c => c.items.forEach(it => byId[it.id] = it));
+$("#menu").addEventListener("click", e => { const b = e.target.closest(".item"); if (b) openItem(byId[b.dataset.id]); });
+
+/* scrollspy (solo mueve la barra de pestañas, nunca la página) */
+const tabs = [...document.querySelectorAll(".tab")];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  tabs.forEach(c => c.classList.toggle("on", c.dataset.c === e.target.id));
+  const on = tabs.find(c => c.classList.contains("on")), box = $("#chips");
+  if (on && box.scrollWidth > box.clientWidth) box.scrollTo({left: on.offsetLeft - (box.clientWidth - on.offsetWidth) / 2, behavior: "smooth"});
+}), {rootMargin:"-130px 0px -65% 0px"});
+document.querySelectorAll("section.cat").forEach(s => io.observe(s));
+
+/* ============ CARRITO ============ */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("taj_cart") || "[]"); } catch(e){}
+const save = () => { try { localStorage.setItem("taj_cart", JSON.stringify(cart)); } catch(e){} };
+const total = () => cart.reduce((s, l) => s + l.p * l.q, 0);
+const count = () => cart.reduce((s, l) => s + l.q, 0);
+function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 1600); }
+function refresh(){
+  $("#bar").classList.toggle("show", count() > 0);
+  $("#barN").textContent = `Ver pedido · ${count()}`;
+  $("#barT").textContent = cop(total());
+  save();
+}
+
+function addLine(n, p, q, o, note, id){
+  const key = (id || n) + "|" + o.join(",") + "|" + (note || ""), ex = cart.find(l => l.k === key);
+  ex ? ex.q += q : cart.push({k:key, n, p, q, o, note: note || ""});
+  refresh();
+}
+const UPSELL = [
+  ["Papas", [["Papas a la francesa", 7000], ["Papas agrandadas", 10000]]],
+  ["Bebidas", [["Soda artesanal", 7000], ["Limonada", 6000], ["Gaseosa en lata", 5000], ["Hatsu 250 ml", 6000]]]
+];
+function showAdded(name){
+  const sh = $("#sheetAdded");
+  sh.innerHTML = `<button class="x" data-close aria-label="Cerrar">✕</button>
+    <div class="bd"><p class="okk">✓ Agregado a tu pedido</p><h3 class="t" style="margin-top:6px">${esc(name)}</h3>
+      <div class="up">${UPSELL.map(([t, rows]) => `<h4>${t}</h4>` + rows.map(([n, p]) => `
+        <div class="upr"><span class="n">${n}</span><span class="p">${cop(p)}</span><button data-quick="${esc(n)}" data-p="${p}">Agregar</button></div>`).join("")).join("")}</div>
+      <p class="hint" style="margin-top:14px">¿Prefieres otra bebida, jugo o postre? Toca "Seguir pidiendo" y búscalo en el menú.</p>
+    </div>
+    <div class="ft"><button class="alt" data-close>Seguir pidiendo</button>
+      <button class="go" data-cart>Ver pedido · <span id="addedTotal">${cop(total())}</span></button></div>`;
+  $("#ovAdded").classList.add("show"); document.body.style.overflow = "hidden";
+}
+$("#sheetAdded").addEventListener("click", e => {
+  if (e.target.closest("[data-close]")) return closeAll();
+  if (e.target.closest("[data-cart]")) { closeAll(); return openCart(); }
+  const b = e.target.closest("[data-quick]"); if (!b) return;
+  addLine(b.dataset.quick, +b.dataset.p, 1, [], "", "q-" + b.dataset.quick);
+  const n = cart.find(l => l.k.startsWith("q-" + b.dataset.quick + "|")).q;
+  b.textContent = "✓ Agregado" + (n > 1 ? " ×" + n : ""); b.classList.add("done");
+  $("#addedTotal").textContent = cop(total());
+});
+
+/* ---- modal producto ---- */
+let cur = null;
+function openItem(it){
+  cur = {it, sel:{}, q:1};
+  (it.o || []).forEach(g => { cur.sel[g.id] = g.type === "one" ? (g.def != null ? [g.def] : []) : []; });
+  const sh = $("#sheetItem");
+  sh.innerHTML = `
+    <div class="hd${it.img ? "" : " noimg"}">${it.img ? `<img class="cover" src="img/${it.img}.jpg" alt="${esc(it.n)}">` : ""}
+      <button class="x" aria-label="Cerrar" data-close>✕</button></div>
+    <div class="bd">
+      <h3 class="t">${esc(it.n)}</h3>${it.d ? `<p class="d">${esc(it.d)}</p>` : ""}
+      <p style="font-weight:700;margin-top:6px">${cop(it.p)}</p>
+      ${(it.o || []).map(g => `
+        <div class="grp" data-g="${g.id}">
+          <div class="gt"><span>${g.t}</span><small class="${g.min || g.req ? "req" : ""}">${g.min ? "Obligatorio · elige " + g.min : g.req ? "Obligatorio" : g.type === "many" && g.max ? "Opcional · máx. " + g.max : "Opcional"}</small></div>
+          ${g.opts.map((o, i) => `
+            <label class="opt"><input type="${g.type === "one" ? "radio" : "checkbox"}" name="${g.id}" value="${i}" ${cur.sel[g.id].includes(i) ? "checked" : ""}>
+              <span>${o[0]}</span>${o[1] ? `<em>+${cop(o[1])}</em>` : ""}</label>`).join("")}
+        </div>`).join("")}
+      <div class="grp"><div class="gt"><span>Notas</span><small>Opcional</small></div>
+        <textarea id="note" placeholder="Ej: sin cebolla, salsa aparte…"></textarea></div>
+    </div>
+    <div class="ft">
+      <div class="qty"><button data-q="-1" aria-label="Menos">−</button><span id="qv">1</span><button data-q="1" aria-label="Más">+</button></div>
+      <button class="go" id="goAdd"></button>
+    </div>`;
+  $("#ovItem").classList.add("show"); document.body.style.overflow = "hidden";
+  upd();
+}
+function itemPrice(){
+  let p = cur.it.p;
+  (cur.it.o || []).forEach(g => cur.sel[g.id].forEach(i => p += g.opts[i][1]));
+  return p;
+}
+function upd(){
+  const it = cur.it; let ok = true;
+  (it.o || []).forEach(g => {
+    const n = cur.sel[g.id].length;
+    if ((g.min && n < g.min) || (g.req && n < 1)) ok = false;
+    if (g.type === "many" && g.max) document.querySelectorAll(`#sheetItem input[name="${g.id}"]`).forEach(inp => {
+      inp.closest(".opt").classList.toggle("dis", n >= g.max && !inp.checked);
+    });
+  });
+  const b = $("#goAdd"); b.disabled = !ok;
+  b.textContent = ok ? `Agregar · ${cop(itemPrice() * cur.q)}` : "Completa las opciones";
+  $("#qv").textContent = cur.q;
+}
+$("#sheetItem").addEventListener("change", e => {
+  const inp = e.target; if (inp.tagName !== "INPUT") return;
+  const g = cur.it.o.find(x => x.id === inp.name), i = +inp.value;
+  if (g.type === "one") cur.sel[g.id] = [i];
+  else { const a = cur.sel[g.id]; inp.checked ? a.push(i) : a.splice(a.indexOf(i), 1); }
+  upd();
+});
+$("#sheetItem").addEventListener("click", e => {
+  if (e.target.closest("[data-close]")) return closeAll();
+  const q = e.target.closest("[data-q]"); if (q){ cur.q = Math.max(1, Math.min(20, cur.q + +q.dataset.q)); upd(); }
+  if (e.target.id === "goAdd"){
+    const it = cur.it, opts = [];
+    (it.o || []).forEach(g => cur.sel[g.id].forEach(i => { if (g.opts[i][1] || g.type === "many" || g.req || i !== g.def) opts.push(g.opts[i][0] + (g.opts[i][1] ? "" : "")); }));
+    const note = $("#note").value.trim();
+    addLine(it.n, itemPrice(), cur.q, opts, note, it.id);
+    closeAll(); showAdded(it.n);
+  }
+});
+
+/* ---- drawer carrito ---- */
+function openCart(){
+  $("#toast").classList.remove("show");
+  const sh = $("#sheetCart");
+  if (!cart.length){
+    sh.innerHTML = `<button class="x" data-close aria-label="Cerrar">✕</button>
+      <div class="bd"><h3 class="t">Tu pedido</h3><p class="empty">Aún no has agregado nada.</p></div>
+      <div class="ft"><button class="go" data-close>Ver menú</button></div>`;
+  } else {
+    sh.innerHTML = `<button class="x" data-close aria-label="Cerrar">✕</button>
+      <div class="bd">
+      <h3 class="t" style="margin-bottom:14px">Tu pedido</h3>
+      <div class="lines">${cart.map((l, i) => `
+        <div class="ln"><b>${esc(l.n)}</b><span class="pp">${cop(l.p * l.q)}</span>
+          ${l.o.length || l.note ? `<span class="o">${esc(l.o.join(" · "))}${l.note ? (l.o.length ? " · " : "") + "“" + esc(l.note) + "”" : ""}</span>` : ""}
+          <div class="ctl"><div class="qty"><button data-m="${i}" data-d="-1" aria-label="Menos">−</button><span>${l.q}</span><button data-m="${i}" data-d="1" aria-label="Más">+</button></div>
+          <button class="rm" data-rm="${i}">Quitar</button></div></div>`).join("")}</div>
+      <button class="btn more" data-close>+ Agregar algo más (bebida, papas, postre)</button>
+      <p class="hint" style="margin-top:16px">Completa tus datos y envía el pedido por WhatsApp. El valor del domicilio se confirma por el mismo chat.</p>
+      <form class="f" id="ordForm" style="margin-top:14px">
+        <label class="l">Tu nombre<input name="n" required autocomplete="name" value="${esc(store("taj_name"))}"></label>
+        <label class="l">¿Cómo lo quieres?<select name="m" id="ordMode">
+          <option>Domicilio</option><option>Recoger en el restaurante</option><option>Comer en el restaurante</option></select></label>
+        <label class="l" id="addrBox">Dirección de entrega<input name="a" autocomplete="street-address" placeholder="Calle, número, barrio, apto" required></label>
+        <label class="l">Comentarios generales (opcional)<textarea name="c"></textarea></label>
+      </form></div>
+      <div class="ft"><div class="ftt"><small>Total</small><b>${cop(total())}</b></div>
+        <button class="go" type="submit" form="ordForm">Enviar por WhatsApp</button></div>`;
+  }
+  $("#ovCart").classList.add("show"); document.body.style.overflow = "hidden";
+}
+$("#sheetCart").addEventListener("click", e => {
+  if (e.target.closest("[data-close]")) return closeAll();
+  const m = e.target.closest("[data-m]"), r = e.target.closest("[data-rm]");
+  if (m){ const l = cart[+m.dataset.m]; l.q += +m.dataset.d; if (l.q < 1) cart.splice(+m.dataset.m, 1); refresh(); keepScroll(); }
+  if (r){ cart.splice(+r.dataset.rm, 1); refresh(); keepScroll(); }
+});
+function keepScroll(){ const bd = $("#sheetCart .bd"), y = bd ? bd.scrollTop : 0; const f = $("#ordForm"), v = f ? Object.fromEntries(new FormData(f)) : {};
+  openCart(); const nb = $("#sheetCart .bd"); if (nb) nb.scrollTop = y;
+  const nf = $("#ordForm"); if (nf) { for (const k in v) if (nf.elements[k]) nf.elements[k].value = v[k]; $("#ordMode").dispatchEvent(new Event("change")); } }
+$("#sheetCart").addEventListener("change", e => {
+  if (e.target.id === "ordMode"){ const dom = e.target.value === "Domicilio"; $("#addrBox").style.display = dom ? "" : "none"; $("#addrBox input").required = dom; }
+});
+$("#sheetCart").addEventListener("submit", e => {
+  e.preventDefault(); const f = Object.fromEntries(new FormData(e.target));
+  try { localStorage.setItem("taj_name", f.n); } catch(_){}
+  let t = `PEDIDO - TAJ ARABE\n------------------------\n\nNombre: ${f.n}\nModalidad: ${f.m}\n` + (f.m === "Domicilio" ? `Direccion: ${f.a}\n` : "") + `\n`;
+  cart.forEach(l => { t += `${l.q} x ${l.n} - ${cop(l.p * l.q)}\n`; l.o.forEach(o => t += `   + ${o}\n`); if (l.note) t += `   Nota: ${l.note}\n`; });
+  t += `\n------------------------\nTOTAL: ${cop(total())}` + (f.m === "Domicilio" ? " (domicilio no incluido)" : "");
+  if (f.c) t += `\n\nComentarios: ${f.c}`;
+  /* enlace al pedido con fotos (pedido.html) */
+  try {
+    const imgOf = n => { for (const c of MENU) for (const it of c.items) if (it.n === n) return it.img || ""; return ""; };
+    const data = {n:f.n, m:f.m, a:f.a || "", c:f.c || "", t:total(), l:cart.map(l => ({q:l.q, n:l.n, p:l.p, o:l.o, k:l.note, i:imgOf(l.n)}))};
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(data)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+    if (location.protocol.startsWith("http")) t += `\n\nVer pedido con fotos:\n${new URL("pedido.html", location.href).href}?o=${b64}`;
+  } catch(_){}
+  openWA(wa(t));
+});
+$("#barBtn").onclick = openCart;
+function closeAll(){ document.querySelectorAll(".ov").forEach(o => o.classList.remove("show")); document.body.style.overflow = ""; }
+document.querySelectorAll(".ov").forEach(o => o.addEventListener("click", e => { if (e.target === o) closeAll(); }));
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeAll(); });
+refresh();
+
+/* ============ RESERVAS ============ */
+const bog = new Date(new Date().toLocaleString("en-US", {timeZone:"America/Bogota"}));
+const iso = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+$("#resDate").min = iso(bog); $("#resDate").value = iso(bog);
+$("#resPpl").innerHTML = Array.from({length:12}, (_, i) => `<option value="${i + 1}">${i + 1} ${i ? "personas" : "persona"}</option>`).join("") + `<option value="Más de 12">Más de 12</option>`;
+$("#resPpl").value = "2";
+function hours(){
+  const v = $("#resDate").value; const day = v ? new Date(v + "T12:00:00").getDay() : 1;
+  const last = day === 0 ? 16 : 20, out = [];
+  for (let h = 12; h <= last; h++) for (const m of [0, 30]) { if (h === last && m) break; const hh = h > 12 ? h - 12 : h; out.push(`<option>${hh}:${m ? "30" : "00"} ${h >= 12 ? (h === 12 ? "m." : "pm") : "am"}</option>`); }
+  $("#resHour").innerHTML = out.join("");
+}
+$("#resDate").addEventListener("change", hours); hours();
+$("#resForm").addEventListener("submit", e => {
+  e.preventDefault(); const f = Object.fromEntries(new FormData(e.target));
+  const [y, m, d] = f.d.split("-"); const fecha = new Date(+y, +m - 1, +d).toLocaleDateString("es-CO", {weekday:"long", day:"numeric", month:"long"});
+  let t = `RESERVA - TAJ ARABE\n------------------------\n\nNombre: ${f.n}\nFecha: ${fecha}\nHora: ${f.h}\nPersonas: ${f.p}` + (f.c ? `\nComentarios: ${f.c}` : "") + `\n\nMe confirman disponibilidad? Gracias.`;
+  openWA(wa(t));
+});
+
+/* ============ CAMISETA / ESTADO / MISC ============ */
+document.querySelectorAll("[data-shirt]").forEach(a => a.href = wa(`Hola Taj Arabe, quiero pedir la camiseta de Palestina ${a.dataset.shirt}.\nMe cuentan cómo hago el pedido?`));
+$("#yr").textContent = new Date().getFullYear();
+/* encabezado: el nombre aparece al pasar el hero; menú móvil */
+const topEl = $("#top");
+new IntersectionObserver(([e]) => topEl.classList.toggle("scrolled", !e.isIntersecting), {rootMargin:"-70px 0px 0px 0px"}).observe($(".hero h1"));
+$("#burger").onclick = () => { const o = topEl.classList.toggle("open"); $("#burger").setAttribute("aria-expanded", o); };
+$("#links").addEventListener("click", () => topEl.classList.remove("open"));
+</script>
+</body>
+</html>

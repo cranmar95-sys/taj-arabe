@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Pedido · Taj Arabe</title>
+<link rel="icon" href="favicon.svg">
+<style>
+@font-face{font-family:"Sketsa";src:url("fonts/SketsaRamadhan.otf") format("opentype")}
+:root{--pine:#273722;--sahara:#E6CB78;--bronze:#B38643;--cream:#F3EDDC;--line:#D9CFB0;--muted:#5E6652}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:#1E2918;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+header{background:var(--pine);text-align:center;padding:22px 16px 18px;border-bottom:1px solid var(--bronze)}
+header b{display:block;font:400 44px/1 "Sketsa",serif;color:var(--sahara)}
+header span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#d8d2bd}
+main{max-width:560px;margin:0 auto;padding:22px 18px 40px}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding-bottom:18px;border-bottom:2px solid var(--pine);font-size:15px}
+.meta dt{color:var(--muted)}.meta dd{font-weight:600}
+.ln{display:grid;grid-template-columns:72px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.ln img,.ln .ph{width:72px;height:72px;object-fit:cover;background:#E9E0C6}
+.ln .ph{display:grid;place-items:center;color:var(--bronze);font-size:26px}
+.ln h3{font-size:16px;color:var(--pine)}.ln h3 small{color:var(--muted);font-weight:600}
+.ln p{font-size:13.5px;color:var(--muted)}
+.ln .pr{font-weight:700;color:var(--pine);white-space:nowrap}
+.tot{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;font-size:22px;font-weight:700;color:var(--pine)}
+.note{background:#fff8;border:1px solid var(--line);padding:12px;font-size:14px;margin-top:4px}
+.err{text-align:center;padding:60px 0;color:var(--muted)}
+</style></head><body>
+<header><b>Taj Arabe</b><span>Pedido recibido</span></header>
+<main id="m"></main>
+<script>
+const cop=n=>"$"+Math.round(n).toLocaleString("es-CO"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+try{
+  const q=new URLSearchParams(location.search).get("o").replace(/-/g,"+").replace(/_/g,"/");
+  const d=JSON.parse(decodeURIComponent(escape(atob(q))));
+  document.getElementById("m").innerHTML=`
+  <dl class="meta"><dt>Cliente</dt><dd>${esc(d.n)}</dd><dt>Modalidad</dt><dd>${esc(d.m)}</dd>${d.a?`<dt>Dirección</dt><dd>${esc(d.a)}</dd>`:""}</dl>
+  ${d.l.map(l=>`<div class="ln">${l.i?`<img src="img/${esc(l.i)}.jpg" alt="">`:`<div class="ph">✦</div>`}
+    <div><h3>${l.q} × ${esc(l.n)}</h3>${l.o.map(o=>`<p>+ ${esc(o)}</p>`).join("")}${l.k?`<p>Nota: ${esc(l.k)}</p>`:""}</div>
+    <div class="pr">${cop(l.p*l.q)}</div></div>`).join("")}
+  <div class="tot"><span>Total</span><span>${cop(d.t)}</span></div>
+  ${d.m==="Domicilio"?`<p class="hint" style="font-size:13px;color:var(--muted)">Domicilio no incluido.</p>`:""}
+  ${d.c?`<div class="note"><b>Comentarios:</b> ${esc(d.c)}</div>`:""}`;
+}catch(e){document.getElementById("m").innerHTML='<p class="err">No se pudo leer el pedido.</p>'}
+</script></body></html>
