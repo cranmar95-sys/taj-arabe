@@ -19,7 +19,7 @@
   --pine:#273722;--sahara:#E6CB78;--bronze:#B38643;--bronze-d:#86602A;
   --cream:#F3EDDC;--cream-2:#E9E0C6;--paper:#FBF8EE;--ink:#1E2918;--muted:#5E6652;--line:#D9CFB0;
   --bad:#B5483A;--r:0px;
-  --grain-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62  0 0 0 0 .70  0 0 0 0 .45  0 0 0 1.1 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--grain-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05  0 0 0 0 .09  0 0 0 0 .04  0 0 0 -1.5 0.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62  0 0 0 0 .70  0 0 0 0 .45  0 0 0 1.1 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--grain-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05  0 0 0 0 .09  0 0 0 0 .04  0 0 0 -1.5 0.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--grain-l2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .62  0 0 0 0 .70  0 0 0 0 .45  0 0 0 0.6 -0.27'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--grain-d2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05  0 0 0 0 .09  0 0 0 0 .04  0 0 0 -0.8 0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --strip:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M14 1 21 7 14 13 7 7Z' fill='none' stroke='%23B38643' stroke-width='1.2'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -32,6 +32,8 @@ a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 .green{background-color:var(--pine);background-image:var(--grain-l),var(--grain-d),radial-gradient(120% 100% at 50% 0%,#364B2D 0%,rgba(43,58,35,0) 65%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.22))}
 .strip{height:14px;background:var(--strip) center/28px 14px repeat-x}
+
+@media(max-width:759px){.green{background-image:var(--grain-l2),var(--grain-d2),radial-gradient(120% 100% at 50% 0%,#364B2D 0%,rgba(39,55,34,0) 65%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.22))}}
 
 /* header */
 .top{position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(179,134,67,.4)}
@@ -112,6 +114,8 @@ section.cat h2::after,.band h2::after{content:"";display:block;width:44px;height
 /* bloques */
 .band{padding:68px 0}
 .band.sahara{background:var(--sahara);color:var(--pine)}
+.band.green{color:var(--cream)}
+.band.green .lead{color:rgba(243,237,220,.9);opacity:1}
 .band.green h2{color:var(--sahara)}.band.green h2::after{background:var(--sahara)}
 .band.sahara h2::after{background:var(--pine)}
 .band .lead{margin:14px 0 26px;max-width:520px;opacity:.9}
