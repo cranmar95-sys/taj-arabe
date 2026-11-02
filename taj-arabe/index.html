@@ -24,7 +24,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:122px}
-body{background:var(--cream);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:76px}
+body{background:var(--cream);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 a{color:inherit}
@@ -127,7 +127,14 @@ label.l{display:grid;gap:6px;font-size:13.5px;font-weight:600;color:var(--muted)
 .green label.l{color:rgba(243,237,220,.8)}
 input,select,textarea{width:100%;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:12px;font:inherit;font-size:16px;font-weight:400}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--bronze);outline-offset:1px}
-textarea{resize:vertical;min-height:70px}
+textarea{resize:vertical;min-height:90px}
+.row2>*{min-width:0}
+input,select{height:50px;-webkit-appearance:none;appearance:none;text-align:left}
+input[type=date],input[type=time]{display:block;min-width:0;max-width:100%;line-height:normal}
+input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
+input[type=date]::-webkit-calendar-picker-indicator{opacity:.7}
+select{padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2386602A' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+input:focus,select:focus,textarea:focus{outline-offset:0}
 .resinfo h3,.info h3{font-size:14px;font-weight:700;margin:0 0 6px}
 .resinfo h3{color:var(--sahara)}.info h3{color:var(--bronze-d);margin-top:22px}.info h3:first-child{margin-top:0}
 .resinfo p{margin:0 0 20px;color:rgba(243,237,220,.9)}.resinfo b{color:var(--cream);font-size:18px}
@@ -140,7 +147,16 @@ textarea{resize:vertical;min-height:70px}
 .socials{display:flex;flex-wrap:wrap;gap:22px;margin-top:8px}
 .socials a{font-size:15px;font-weight:600;color:var(--pine);text-decoration:none;border-bottom:2px solid var(--bronze);padding-bottom:2px}
 .socials a:hover{border-bottom-color:var(--pine)}
-footer{padding:40px 0 34px;text-align:center;color:rgba(243,237,220,.72);font-size:13px}
+footer{padding:64px 0 0;text-align:center;color:rgba(243,237,220,.72);font-size:13px}
+body.hasbar footer{padding-bottom:76px}
+.foot-addr{margin-bottom:34px}
+.foot-bottom{border-top:1px solid rgba(243,237,220,.16);padding:18px 0 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:rgba(243,237,220,.55)}
+.design-by{display:inline-flex;align-items:center;gap:7px;color:rgba(243,237,220,.55);text-decoration:none;font-size:12px;transition:color .25s ease}
+.design-by:hover{color:var(--sahara)}
+.design-by svg{width:14px;height:14px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.design-by:hover svg{transform:rotate(180deg)}
+.design-by svg path,.design-by svg circle{fill:currentColor}
+@media(max-width:600px){.foot-bottom{flex-direction:column;justify-content:center;text-align:center;gap:10px}}
 .foot-brand{font-family:"Sketsa",serif;font-size:42px;line-height:1.05;color:var(--sahara);margin-bottom:6px}
 
 /* barra de pedido */
@@ -243,7 +259,6 @@ footer{padding:40px 0 34px;text-align:center;color:rgba(243,237,220,.72);font-si
   <main class="wrap" id="menu"></main>
 </div>
 
-<div class="strip" style="margin-top:56px"></div>
 
 <section class="band green" id="reservas" data-spy>
   <div class="wrap">
@@ -308,8 +323,18 @@ footer{padding:40px 0 34px;text-align:center;color:rgba(243,237,220,.72);font-si
   </div>
 </section>
 
-<div class="strip"></div>
-<footer class="green"><div class="foot-brand brand">Taj Arabe</div><div style="margin-bottom:6px">Ak 7 #45-88, Chapinero · Bogotá</div><div>© <span id="yr"></span> Taj Arabe · Chapinero, Bogotá</div></footer>
+<footer class="green">
+  <div class="wrap">
+    <div class="foot-brand brand">Taj Arabe</div>
+    <div class="foot-addr">Ak 7 #45-88, Chapinero · Bogotá</div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Taj Arabe. Todos los derechos reservados.</span>
+      <a class="design-by" href="https://www.codigociego.com" target="_blank" rel="noopener">Design by
+        <svg viewBox="0 0 309.23 305.76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M258.15,174.24l49.42.09c-10.99,73.71-77.47,130.21-151.4,131.42-32.16.52-62.82-9.71-89.12-27.66C27.25,250.92,2.39,207.26.15,158.83c-1.82-39.46,12.7-78.15,39.2-107.32C66.38,21.77,103.3,3.44,143.42.41c27.49-2.08,54.18,3.93,78.78,15.67,51.54,24.87,85.16,76.15,87.03,133.4h-48.92c-1.3-38.76-23.72-73.08-58.32-90.29-17.49-8.58-36.4-12.36-55.71-11.01-52.41,3.65-93.89,44.85-97.43,97.17-3.74,55.22,36.8,103.4,90.73,111.01,54.63,7.71,106.37-27.48,118.58-82.12Z"/><circle cx="154.55" cy="152.68" r="55.53"/></svg>
+        Código Ciego</a>
+    </div>
+  </div>
+</footer>
 
 <div class="bar" id="bar"><button id="barBtn"><span class="bl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="barN">Ver pedido</span></span><span class="bt"><span id="barT"></span><span aria-hidden="true">→</span></span></button></div>
 
@@ -431,7 +456,7 @@ const total = () => cart.reduce((s, l) => s + l.p * l.q, 0);
 const count = () => cart.reduce((s, l) => s + l.q, 0);
 function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 1600); }
 function refresh(){
-  $("#bar").classList.toggle("show", count() > 0);
+  $("#bar").classList.toggle("show", count() > 0); document.body.classList.toggle("hasbar", count() > 0);
   $("#barN").textContent = `Ver pedido · ${count()}`;
   $("#barT").textContent = cop(total());
   save();
